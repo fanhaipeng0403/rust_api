@@ -18,6 +18,8 @@ lazy_static!{
         let password = std::env::var("DB_PASSWORD").expect("DB_PASSWORD must be set");
         
         let database_url = format!("{}://{}:{}@{}:{}/{}", conn, username, password, host, port, dbname);
+        print!("{}", database_url);
+
 
         let manager = ConnectionManager::<MysqlConnection>::new(database_url);
         Pool::new(manager).expect("Failed to create db pool.")
